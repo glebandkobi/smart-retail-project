@@ -1,0 +1,260 @@
+{
+  "name": "flask-sqlalchemy",
+  "version": "3.1.1",
+  "build": "py313h06a4308_0",
+  "build_number": 0,
+  "channel": "https://repo.anaconda.com/pkgs/main/linux-64",
+  "subdir": "linux-64",
+  "fn": "flask-sqlalchemy-3.1.1-py313h06a4308_0.conda",
+  "md5": "9ad62bf45810c3b9d75804b2a6f6b739",
+  "url": "https://repo.anaconda.com/pkgs/main/linux-64/flask-sqlalchemy-3.1.1-py313h06a4308_0.conda",
+  "sha256": "80431a445914d9ff4a3dd06e7129f7081834d2a426c64842b4c65b8d914816a8",
+  "depends": [
+    "flask >=2.2.5",
+    "python >=3.13,<3.14.0a0",
+    "python_abi 3.13.* *_cp313",
+    "sqlalchemy >=2.0.16"
+  ],
+  "constrains": [],
+  "license": "BSD-3-Clause",
+  "timestamp": 1735869612000,
+  "size": 49136,
+  "requested_spec": "flask-sqlalchemy",
+  "package_tarball_full_path": "/home/gleb/smart-retail-project/retail-app/backend/exit/pkgs/flask-sqlalchemy-3.1.1-py313h06a4308_0.conda",
+  "extracted_package_dir": "/home/gleb/smart-retail-project/retail-app/backend/exit/pkgs/flask-sqlalchemy-3.1.1-py313h06a4308_0",
+  "files": [
+    "lib/python3.13/site-packages/flask_sqlalchemy-3.1.1.dist-info/INSTALLER",
+    "lib/python3.13/site-packages/flask_sqlalchemy-3.1.1.dist-info/LICENSE.rst",
+    "lib/python3.13/site-packages/flask_sqlalchemy-3.1.1.dist-info/METADATA",
+    "lib/python3.13/site-packages/flask_sqlalchemy-3.1.1.dist-info/RECORD",
+    "lib/python3.13/site-packages/flask_sqlalchemy-3.1.1.dist-info/REQUESTED",
+    "lib/python3.13/site-packages/flask_sqlalchemy-3.1.1.dist-info/WHEEL",
+    "lib/python3.13/site-packages/flask_sqlalchemy-3.1.1.dist-info/direct_url.json",
+    "lib/python3.13/site-packages/flask_sqlalchemy/__init__.py",
+    "lib/python3.13/site-packages/flask_sqlalchemy/__pycache__/__init__.cpython-313.pyc",
+    "lib/python3.13/site-packages/flask_sqlalchemy/__pycache__/cli.cpython-313.pyc",
+    "lib/python3.13/site-packages/flask_sqlalchemy/__pycache__/extension.cpython-313.pyc",
+    "lib/python3.13/site-packages/flask_sqlalchemy/__pycache__/model.cpython-313.pyc",
+    "lib/python3.13/site-packages/flask_sqlalchemy/__pycache__/pagination.cpython-313.pyc",
+    "lib/python3.13/site-packages/flask_sqlalchemy/__pycache__/query.cpython-313.pyc",
+    "lib/python3.13/site-packages/flask_sqlalchemy/__pycache__/record_queries.cpython-313.pyc",
+    "lib/python3.13/site-packages/flask_sqlalchemy/__pycache__/session.cpython-313.pyc",
+    "lib/python3.13/site-packages/flask_sqlalchemy/__pycache__/table.cpython-313.pyc",
+    "lib/python3.13/site-packages/flask_sqlalchemy/__pycache__/track_modifications.cpython-313.pyc",
+    "lib/python3.13/site-packages/flask_sqlalchemy/cli.py",
+    "lib/python3.13/site-packages/flask_sqlalchemy/extension.py",
+    "lib/python3.13/site-packages/flask_sqlalchemy/model.py",
+    "lib/python3.13/site-packages/flask_sqlalchemy/pagination.py",
+    "lib/python3.13/site-packages/flask_sqlalchemy/py.typed",
+    "lib/python3.13/site-packages/flask_sqlalchemy/query.py",
+    "lib/python3.13/site-packages/flask_sqlalchemy/record_queries.py",
+    "lib/python3.13/site-packages/flask_sqlalchemy/session.py",
+    "lib/python3.13/site-packages/flask_sqlalchemy/table.py",
+    "lib/python3.13/site-packages/flask_sqlalchemy/track_modifications.py"
+  ],
+  "paths_data": {
+    "paths_version": 1,
+    "paths": [
+      {
+        "_path": "lib/python3.13/site-packages/flask_sqlalchemy-3.1.1.dist-info/INSTALLER",
+        "path_type": "hardlink",
+        "sha256": "d0edee15f91b406f3f99726e44eb990be6e34fd0345b52b910c568e0eef6a2a8",
+        "size_in_bytes": 5,
+        "sha256_in_prefix": "d0edee15f91b406f3f99726e44eb990be6e34fd0345b52b910c568e0eef6a2a8"
+      },
+      {
+        "_path": "lib/python3.13/site-packages/flask_sqlalchemy-3.1.1.dist-info/LICENSE.rst",
+        "path_type": "hardlink",
+        "sha256": "489a8e1108509ed98a37bb983e11e0f7e1d31f0bd8f99a79c8448e7ff37d07ea",
+        "size_in_bytes": 1475,
+        "sha256_in_prefix": "489a8e1108509ed98a37bb983e11e0f7e1d31f0bd8f99a79c8448e7ff37d07ea"
+      },
+      {
+        "_path": "lib/python3.13/site-packages/flask_sqlalchemy-3.1.1.dist-info/METADATA",
+        "path_type": "hardlink",
+        "sha256": "941c51d5a901b7b9fd5c18c85532f6395e763a109f16b6fe32ab687b40c26d1f",
+        "size_in_bytes": 3432,
+        "sha256_in_prefix": "941c51d5a901b7b9fd5c18c85532f6395e763a109f16b6fe32ab687b40c26d1f"
+      },
+      {
+        "_path": "lib/python3.13/site-packages/flask_sqlalchemy-3.1.1.dist-info/RECORD",
+        "path_type": "hardlink",
+        "sha256": "eab7cc7325d9746741001e10dfe0e7f8c16e0d2e261459210bc7fdf27a3a9922",
+        "size_in_bytes": 2156,
+        "sha256_in_prefix": "eab7cc7325d9746741001e10dfe0e7f8c16e0d2e261459210bc7fdf27a3a9922"
+      },
+      {
+        "_path": "lib/python3.13/site-packages/flask_sqlalchemy-3.1.1.dist-info/REQUESTED",
+        "path_type": "hardlink",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "size_in_bytes": 0,
+        "sha256_in_prefix": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      {
+        "_path": "lib/python3.13/site-packages/flask_sqlalchemy-3.1.1.dist-info/WHEEL",
+        "path_type": "hardlink",
+        "sha256": "1196c6921ec87b83e865f450f08d19b8ff5592537f4ef719e83484e546abe33e",
+        "size_in_bytes": 81,
+        "sha256_in_prefix": "1196c6921ec87b83e865f450f08d19b8ff5592537f4ef719e83484e546abe33e"
+      },
+      {
+        "_path": "lib/python3.13/site-packages/flask_sqlalchemy-3.1.1.dist-info/direct_url.json",
+        "path_type": "hardlink",
+        "sha256": "56b27da0df571597fee95975dbbeb426b591bd0637ae63a4d4143a792aec01b4",
+        "size_in_bytes": 88,
+        "sha256_in_prefix": "56b27da0df571597fee95975dbbeb426b591bd0637ae63a4d4143a792aec01b4"
+      },
+      {
+        "_path": "lib/python3.13/site-packages/flask_sqlalchemy/__init__.py",
+        "path_type": "hardlink",
+        "sha256": "85eff0e2a410552d99d66b391824e9b434d734e5c15f0d27f334ae582a7c9fa6",
+        "size_in_bytes": 653,
+        "sha256_in_prefix": "85eff0e2a410552d99d66b391824e9b434d734e5c15f0d27f334ae582a7c9fa6"
+      },
+      {
+        "_path": "lib/python3.13/site-packages/flask_sqlalchemy/__pycache__/__init__.cpython-313.pyc",
+        "path_type": "hardlink",
+        "sha256": "ef99226c2f775e5f69eb2bf3ae87f23a425f8231fed60529a2db9e3e0116f468",
+        "size_in_bytes": 1003,
+        "sha256_in_prefix": "ef99226c2f775e5f69eb2bf3ae87f23a425f8231fed60529a2db9e3e0116f468"
+      },
+      {
+        "_path": "lib/python3.13/site-packages/flask_sqlalchemy/__pycache__/cli.cpython-313.pyc",
+        "path_type": "hardlink",
+        "sha256": "3b24f278c30d7e8cb979957480249b99150bc0631e6c92aa81520b46dba46f36",
+        "size_in_bytes": 974,
+        "sha256_in_prefix": "3b24f278c30d7e8cb979957480249b99150bc0631e6c92aa81520b46dba46f36"
+      },
+      {
+        "_path": "lib/python3.13/site-packages/flask_sqlalchemy/__pycache__/extension.cpython-313.pyc",
+        "path_type": "hardlink",
+        "sha256": "8ea09bf5b8f10fcfd70238f052b89a0ffd8a2ace38505e18a8b46bcb71afebd9",
+        "size_in_bytes": 38261,
+        "sha256_in_prefix": "8ea09bf5b8f10fcfd70238f052b89a0ffd8a2ace38505e18a8b46bcb71afebd9"
+      },
+      {
+        "_path": "lib/python3.13/site-packages/flask_sqlalchemy/__pycache__/model.cpython-313.pyc",
+        "path_type": "hardlink",
+        "sha256": "89d1315dcd7b724e406f1039f54ea4008c50e42d768287d275084c3b0b7c5613",
+        "size_in_bytes": 13731,
+        "sha256_in_prefix": "89d1315dcd7b724e406f1039f54ea4008c50e42d768287d275084c3b0b7c5613"
+      },
+      {
+        "_path": "lib/python3.13/site-packages/flask_sqlalchemy/__pycache__/pagination.cpython-313.pyc",
+        "path_type": "hardlink",
+        "sha256": "bf2cf962ac3626108d2d38e4d7180b683657f214dbd6698e837ecd2b773f9fb3",
+        "size_in_bytes": 13989,
+        "sha256_in_prefix": "bf2cf962ac3626108d2d38e4d7180b683657f214dbd6698e837ecd2b773f9fb3"
+      },
+      {
+        "_path": "lib/python3.13/site-packages/flask_sqlalchemy/__pycache__/query.cpython-313.pyc",
+        "path_type": "hardlink",
+        "sha256": "8a9969796fad1b5d1354632f122d519d1c440ae5ef101910f67f71b5fd4d9584",
+        "size_in_bytes": 4253,
+        "sha256_in_prefix": "8a9969796fad1b5d1354632f122d519d1c440ae5ef101910f67f71b5fd4d9584"
+      },
+      {
+        "_path": "lib/python3.13/site-packages/flask_sqlalchemy/__pycache__/record_queries.cpython-313.pyc",
+        "path_type": "hardlink",
+        "sha256": "7aa2e0c9120cba8bfa629eb22872807714a005b13159c98d9930e390510f2b7a",
+        "size_in_bytes": 4816,
+        "sha256_in_prefix": "7aa2e0c9120cba8bfa629eb22872807714a005b13159c98d9930e390510f2b7a"
+      },
+      {
+        "_path": "lib/python3.13/site-packages/flask_sqlalchemy/__pycache__/session.cpython-313.pyc",
+        "path_type": "hardlink",
+        "sha256": "57b203ff8ce0da9e691be5dd5ec6818baa63fabf4b196371bc4071ff52f60189",
+        "size_in_bytes": 4566,
+        "sha256_in_prefix": "57b203ff8ce0da9e691be5dd5ec6818baa63fabf4b196371bc4071ff52f60189"
+      },
+      {
+        "_path": "lib/python3.13/site-packages/flask_sqlalchemy/__pycache__/table.cpython-313.pyc",
+        "path_type": "hardlink",
+        "sha256": "1c5878814dd580f67f223ededd3bf6115fe3cae010d246af048ec696ea818982",
+        "size_in_bytes": 1834,
+        "sha256_in_prefix": "1c5878814dd580f67f223ededd3bf6115fe3cae010d246af048ec696ea818982"
+      },
+      {
+        "_path": "lib/python3.13/site-packages/flask_sqlalchemy/__pycache__/track_modifications.cpython-313.pyc",
+        "path_type": "hardlink",
+        "sha256": "1d4330fe2f7c0f99b5d81d76a8a9bd1b783466a192005530931fcb441b83243b",
+        "size_in_bytes": 3673,
+        "sha256_in_prefix": "1d4330fe2f7c0f99b5d81d76a8a9bd1b783466a192005530931fcb441b83243b"
+      },
+      {
+        "_path": "lib/python3.13/site-packages/flask_sqlalchemy/cli.py",
+        "path_type": "hardlink",
+        "sha256": "a60dd00f13f7e865b6aa7c1efc2a4fb644613dc87255218ceb3941356b8d0851",
+        "size_in_bytes": 484,
+        "sha256_in_prefix": "a60dd00f13f7e865b6aa7c1efc2a4fb644613dc87255218ceb3941356b8d0851"
+      },
+      {
+        "_path": "lib/python3.13/site-packages/flask_sqlalchemy/extension.py",
+        "path_type": "hardlink",
+        "sha256": "ef5b4ffe436d6f956065d69fcbf387d6c59d64e03a3da4fb709a97eed2a067e9",
+        "size_in_bytes": 38261,
+        "sha256_in_prefix": "ef5b4ffe436d6f956065d69fcbf387d6c59d64e03a3da4fb709a97eed2a067e9"
+      },
+      {
+        "_path": "lib/python3.13/site-packages/flask_sqlalchemy/model.py",
+        "path_type": "hardlink",
+        "sha256": "fe64a2b02d849e2d13813c8559e37f3b82c87b14de3ffb154ddc61d37c8c2b9d",
+        "size_in_bytes": 11461,
+        "sha256_in_prefix": "fe64a2b02d849e2d13813c8559e37f3b82c87b14de3ffb154ddc61d37c8c2b9d"
+      },
+      {
+        "_path": "lib/python3.13/site-packages/flask_sqlalchemy/pagination.py",
+        "path_type": "hardlink",
+        "sha256": "245a6596baa4464c1a71bf030264166b3f70b2f41ad1dca97d2921503482db0b",
+        "size_in_bytes": 11119,
+        "sha256_in_prefix": "245a6596baa4464c1a71bf030264166b3f70b2f41ad1dca97d2921503482db0b"
+      },
+      {
+        "_path": "lib/python3.13/site-packages/flask_sqlalchemy/py.typed",
+        "path_type": "hardlink",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "size_in_bytes": 0,
+        "sha256_in_prefix": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      {
+        "_path": "lib/python3.13/site-packages/flask_sqlalchemy/query.py",
+        "path_type": "hardlink",
+        "sha256": "525b3da9b9a7a5bf556dae371037ec44fd7b7872745f8546ed2136dad1f94778",
+        "size_in_bytes": 3748,
+        "sha256_in_prefix": "525b3da9b9a7a5bf556dae371037ec44fd7b7872745f8546ed2136dad1f94778"
+      },
+      {
+        "_path": "lib/python3.13/site-packages/flask_sqlalchemy/record_queries.py",
+        "path_type": "hardlink",
+        "sha256": "a2e4b56b28f5ea1efa2c9a6bc75de261da0565b9ba9bc3a772b3a00156c6d529",
+        "size_in_bytes": 3520,
+        "sha256_in_prefix": "a2e4b56b28f5ea1efa2c9a6bc75de261da0565b9ba9bc3a772b3a00156c6d529"
+      },
+      {
+        "_path": "lib/python3.13/site-packages/flask_sqlalchemy/session.py",
+        "path_type": "hardlink",
+        "sha256": "a416ed37c88373ccae195b74935f01bd91e1dae108ed03f36573bb797ad18b58",
+        "size_in_bytes": 3426,
+        "sha256_in_prefix": "a416ed37c88373ccae195b74935f01bd91e1dae108ed03f36573bb797ad18b58"
+      },
+      {
+        "_path": "lib/python3.13/site-packages/flask_sqlalchemy/table.py",
+        "path_type": "hardlink",
+        "sha256": "c003cecbcab0c80c6933038850963888c3ae96dcf3d96d03eb1bc1910ed4d821",
+        "size_in_bytes": 859,
+        "sha256_in_prefix": "c003cecbcab0c80c6933038850963888c3ae96dcf3d96d03eb1bc1910ed4d821"
+      },
+      {
+        "_path": "lib/python3.13/site-packages/flask_sqlalchemy/track_modifications.py",
+        "path_type": "hardlink",
+        "sha256": "ca27b2a338fb222573c2700667e66b82aaf38eb51f1b490fad705f5bf852b525",
+        "size_in_bytes": 2755,
+        "sha256_in_prefix": "ca27b2a338fb222573c2700667e66b82aaf38eb51f1b490fad705f5bf852b525"
+      }
+    ]
+  },
+  "link": {
+    "source": "/home/gleb/smart-retail-project/retail-app/backend/exit/pkgs/flask-sqlalchemy-3.1.1-py313h06a4308_0",
+    "type": 1
+  }
+}

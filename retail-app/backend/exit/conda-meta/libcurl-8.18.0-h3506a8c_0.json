@@ -1,0 +1,93 @@
+{
+  "name": "libcurl",
+  "version": "8.18.0",
+  "build": "h3506a8c_0",
+  "build_number": 0,
+  "channel": "https://repo.anaconda.com/pkgs/main/linux-64",
+  "subdir": "linux-64",
+  "fn": "libcurl-8.18.0-h3506a8c_0.conda",
+  "md5": "2963726272327ecbb6727c670302dbd9",
+  "url": "https://repo.anaconda.com/pkgs/main/linux-64/libcurl-8.18.0-h3506a8c_0.conda",
+  "sha256": "0ac765625f1b438fe4b6dce0771d2b9468f44cc370f2646aa1ac1b4215460f1c",
+  "arch": "x86_64",
+  "platform": "linux",
+  "depends": [
+    "__glibc >=2.28,<3.0.a0",
+    "libbrotlicommon >=1.2.0,<1.3.0a0",
+    "libbrotlidec >=1.2.0,<1.3.0a0",
+    "libbrotlienc >=1.2.0,<1.3.0a0",
+    "libgcc >=14",
+    "libidn2 >=2,<3.0a0",
+    "libkrb5 >=1.22.1,<1.23.0a0",
+    "libnghttp2 >=1.57.0",
+    "libnghttp2 >=1.67.1,<1.68.0a0",
+    "libssh2 >=1.11.1",
+    "libssh2 >=1.11.1,<2.0a0",
+    "openssl >=3.0.18,<4.0a0",
+    "zlib >=1.2.13,<2.0a0",
+    "zstd >=1.5.6,<1.6.0a0"
+  ],
+  "constrains": [],
+  "license": "curl",
+  "license_family": "MIT",
+  "timestamp": 1769605006000,
+  "size": 497677,
+  "requested_spec": "pkgs/main/linux-64::libcurl==8.18.0=h3506a8c_0",
+  "package_tarball_full_path": "/home/gleb/smart-retail-project/retail-app/backend/exit/pkgs/libcurl-8.18.0-h3506a8c_0.conda",
+  "extracted_package_dir": "/home/gleb/smart-retail-project/retail-app/backend/exit/pkgs/libcurl-8.18.0-h3506a8c_0",
+  "files": [
+    "bin/curl-config",
+    "include/curl/curl.h",
+    "include/curl/curlver.h",
+    "include/curl/easy.h",
+    "include/curl/header.h",
+    "include/curl/mprintf.h",
+    "include/curl/multi.h",
+    "include/curl/options.h",
+    "include/curl/stdcheaders.h",
+    "include/curl/system.h",
+    "include/curl/typecheck-gcc.h",
+    "include/curl/urlapi.h",
+    "include/curl/websockets.h",
+    "lib/libcurl.so",
+    "lib/libcurl.so.4",
+    "lib/libcurl.so.4.8.0",
+    "lib/pkgconfig/libcurl.pc"
+  ],
+  "paths_data": {
+    "paths_version": 1,
+    "paths": [
+      {
+        "_path": "bin/curl-config",
+        "prefix_placeholder": "/home/task_176960491742041/croot/curl-split_1769604957454/_h_env_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_",
+        "file_mode": "text",
+        "path_type": "hardlink",
+        "sha256": "c8e09eec7173fede1fed5d18b12a798aa39edb650913ae0aa41d68aaee8cf1ea",
+        "size_in_bytes": 5710,
+        "sha256_in_prefix": "6ef380d26d598115ea73fa35dcc453398f6b09206b55d7ba695e2f9f6964e746"
+      },
+      {
+        "_path": "lib/libcurl.so.4.8.0",
+        "prefix_placeholder": "/home/task_176960491742041/croot/curl-split_1769604957454/_h_env_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_",
+        "file_mode": "binary",
+        "path_type": "hardlink",
+        "sha256": "91cd88d7e047e25cf3f9e1ad822fd3acc95074dfd3f35d11729bf1a888c191a6",
+        "size_in_bytes": 1143896,
+        "sha256_in_prefix": "7185d5c878a919707940baa0e8a0fd9b898c8e28f8d19be5471d1a51b161c2fd"
+      },
+      {
+        "_path": "lib/pkgconfig/libcurl.pc",
+        "prefix_placeholder": "/home/task_176960491742041/croot/curl-split_1769604957454/_h_env_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_",
+        "file_mode": "text",
+        "path_type": "hardlink",
+        "sha256": "5fa110c3a9d8894fb1c8e34c63ff2d13f2aab512d2a14f9e3caac588882c6687",
+        "size_in_bytes": 2140,
+        "sha256_in_prefix": "c8ceef7419d6e6d509211023582b054a3c04ec1035edb1fb535baf2be23533cd"
+      }
+    ]
+  },
+  "link": {
+    "source": "/home/gleb/smart-retail-project/retail-app/backend/exit/pkgs/libcurl-8.18.0-h3506a8c_0",
+    "type": 1
+  }
+}

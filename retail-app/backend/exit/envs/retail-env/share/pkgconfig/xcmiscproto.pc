@@ -1,0 +1,7 @@
+prefix=/home/gleb/smart-retail-project/retail-app/backend/exit/envs/retail-env
+includedir=${prefix}/include
+ 
+Name: XCMiscProto
+Description: XCMisc extension headers
+Version: 1.2.2
+Cflags: -I${includedir}

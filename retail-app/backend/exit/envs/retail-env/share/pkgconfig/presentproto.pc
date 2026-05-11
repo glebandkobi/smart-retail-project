@@ -1,0 +1,7 @@
+prefix=/home/gleb/smart-retail-project/retail-app/backend/exit/envs/retail-env
+includedir=${prefix}/include
+ 
+Name: PresentProto
+Description: Present extension headers
+Version: 1.4
+Cflags: -I${includedir}

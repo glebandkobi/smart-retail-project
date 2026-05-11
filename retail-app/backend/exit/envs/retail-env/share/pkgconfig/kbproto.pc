@@ -1,0 +1,7 @@
+prefix=/home/gleb/smart-retail-project/retail-app/backend/exit/envs/retail-env
+includedir=${prefix}/include
+ 
+Name: KBProto
+Description: KB extension headers
+Version: 1.0.7
+Cflags: -I${includedir}

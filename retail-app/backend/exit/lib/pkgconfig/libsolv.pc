@@ -1,0 +1,8 @@
+libdir=/home/gleb/smart-retail-project/retail-app/backend/exit/lib
+includedir=/home/gleb/smart-retail-project/retail-app/backend/exit/include
+
+Name: libsolv
+Description: Library for solving packages
+Version: 0.7.30
+Libs: -L${libdir} -lsolv
+Cflags: -I${includedir}

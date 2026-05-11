@@ -1,0 +1,226 @@
+{
+  "name": "itsdangerous",
+  "version": "2.2.0",
+  "build": "py313h06a4308_0",
+  "build_number": 0,
+  "channel": "https://repo.anaconda.com/pkgs/main/linux-64",
+  "subdir": "linux-64",
+  "fn": "itsdangerous-2.2.0-py313h06a4308_0.conda",
+  "md5": "124f6ff7859029909567d6098e8fcd3f",
+  "url": "https://repo.anaconda.com/pkgs/main/linux-64/itsdangerous-2.2.0-py313h06a4308_0.conda",
+  "sha256": "1368a01553211d67e96f9b8e2484117a60336f013c516720d54713e4e38a651e",
+  "depends": [
+    "python >=3.13,<3.14.0a0",
+    "python_abi 3.13.* *_cp313"
+  ],
+  "constrains": [],
+  "license": "BSD-3-Clause",
+  "timestamp": 1732920233000,
+  "size": 36783,
+  "requested_spec": "None",
+  "package_tarball_full_path": "/home/gleb/smart-retail-project/retail-app/backend/exit/pkgs/itsdangerous-2.2.0-py313h06a4308_0.conda",
+  "extracted_package_dir": "/home/gleb/smart-retail-project/retail-app/backend/exit/pkgs/itsdangerous-2.2.0-py313h06a4308_0",
+  "files": [
+    "lib/python3.13/site-packages/itsdangerous-2.2.0.dist-info/INSTALLER",
+    "lib/python3.13/site-packages/itsdangerous-2.2.0.dist-info/LICENSE.txt",
+    "lib/python3.13/site-packages/itsdangerous-2.2.0.dist-info/METADATA",
+    "lib/python3.13/site-packages/itsdangerous-2.2.0.dist-info/RECORD",
+    "lib/python3.13/site-packages/itsdangerous-2.2.0.dist-info/REQUESTED",
+    "lib/python3.13/site-packages/itsdangerous-2.2.0.dist-info/WHEEL",
+    "lib/python3.13/site-packages/itsdangerous-2.2.0.dist-info/direct_url.json",
+    "lib/python3.13/site-packages/itsdangerous/__init__.py",
+    "lib/python3.13/site-packages/itsdangerous/__pycache__/__init__.cpython-313.pyc",
+    "lib/python3.13/site-packages/itsdangerous/__pycache__/_json.cpython-313.pyc",
+    "lib/python3.13/site-packages/itsdangerous/__pycache__/encoding.cpython-313.pyc",
+    "lib/python3.13/site-packages/itsdangerous/__pycache__/exc.cpython-313.pyc",
+    "lib/python3.13/site-packages/itsdangerous/__pycache__/serializer.cpython-313.pyc",
+    "lib/python3.13/site-packages/itsdangerous/__pycache__/signer.cpython-313.pyc",
+    "lib/python3.13/site-packages/itsdangerous/__pycache__/timed.cpython-313.pyc",
+    "lib/python3.13/site-packages/itsdangerous/__pycache__/url_safe.cpython-313.pyc",
+    "lib/python3.13/site-packages/itsdangerous/_json.py",
+    "lib/python3.13/site-packages/itsdangerous/encoding.py",
+    "lib/python3.13/site-packages/itsdangerous/exc.py",
+    "lib/python3.13/site-packages/itsdangerous/py.typed",
+    "lib/python3.13/site-packages/itsdangerous/serializer.py",
+    "lib/python3.13/site-packages/itsdangerous/signer.py",
+    "lib/python3.13/site-packages/itsdangerous/timed.py",
+    "lib/python3.13/site-packages/itsdangerous/url_safe.py"
+  ],
+  "paths_data": {
+    "paths_version": 1,
+    "paths": [
+      {
+        "_path": "lib/python3.13/site-packages/itsdangerous-2.2.0.dist-info/INSTALLER",
+        "path_type": "hardlink",
+        "sha256": "d0edee15f91b406f3f99726e44eb990be6e34fd0345b52b910c568e0eef6a2a8",
+        "size_in_bytes": 5,
+        "sha256_in_prefix": "d0edee15f91b406f3f99726e44eb990be6e34fd0345b52b910c568e0eef6a2a8"
+      },
+      {
+        "_path": "lib/python3.13/site-packages/itsdangerous-2.2.0.dist-info/LICENSE.txt",
+        "path_type": "hardlink",
+        "sha256": "63af09891b6be8ad1a4252ed43af0f4efba7fc948e228367bed7f3c5ae0b09d7",
+        "size_in_bytes": 1475,
+        "sha256_in_prefix": "63af09891b6be8ad1a4252ed43af0f4efba7fc948e228367bed7f3c5ae0b09d7"
+      },
+      {
+        "_path": "lib/python3.13/site-packages/itsdangerous-2.2.0.dist-info/METADATA",
+        "path_type": "hardlink",
+        "sha256": "d2b934fb56708a1b94e439f0255c0f5a8108e3258ec827b18a1dc9c991db9611",
+        "size_in_bytes": 1924,
+        "sha256_in_prefix": "d2b934fb56708a1b94e439f0255c0f5a8108e3258ec827b18a1dc9c991db9611"
+      },
+      {
+        "_path": "lib/python3.13/site-packages/itsdangerous-2.2.0.dist-info/RECORD",
+        "path_type": "hardlink",
+        "sha256": "9e29aba1dd5cbb9abb5910e0c79b202b07039159a82a59ed3cb42783725912fe",
+        "size_in_bytes": 1742,
+        "sha256_in_prefix": "9e29aba1dd5cbb9abb5910e0c79b202b07039159a82a59ed3cb42783725912fe"
+      },
+      {
+        "_path": "lib/python3.13/site-packages/itsdangerous-2.2.0.dist-info/REQUESTED",
+        "path_type": "hardlink",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "size_in_bytes": 0,
+        "sha256_in_prefix": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      {
+        "_path": "lib/python3.13/site-packages/itsdangerous-2.2.0.dist-info/WHEEL",
+        "path_type": "hardlink",
+        "sha256": "1196c6921ec87b83e865f450f08d19b8ff5592537f4ef719e83484e546abe33e",
+        "size_in_bytes": 81,
+        "sha256_in_prefix": "1196c6921ec87b83e865f450f08d19b8ff5592537f4ef719e83484e546abe33e"
+      },
+      {
+        "_path": "lib/python3.13/site-packages/itsdangerous-2.2.0.dist-info/direct_url.json",
+        "path_type": "hardlink",
+        "sha256": "42eeef87e094544696488a30851efae32baad9340ecbf0264496c458d3eeb0b5",
+        "size_in_bytes": 84,
+        "sha256_in_prefix": "42eeef87e094544696488a30851efae32baad9340ecbf0264496c458d3eeb0b5"
+      },
+      {
+        "_path": "lib/python3.13/site-packages/itsdangerous/__init__.py",
+        "path_type": "hardlink",
+        "sha256": "e122bbe6c09edbdc5b460404d5942d3079ca52e65801fddb4a964eadf7f52006",
+        "size_in_bytes": 1427,
+        "sha256_in_prefix": "e122bbe6c09edbdc5b460404d5942d3079ca52e65801fddb4a964eadf7f52006"
+      },
+      {
+        "_path": "lib/python3.13/site-packages/itsdangerous/__pycache__/__init__.cpython-313.pyc",
+        "path_type": "hardlink",
+        "sha256": "f70b2bdc03a71c65cd16edc5758d0219a3196cb21a8246f9886b3a0052a4c44b",
+        "size_in_bytes": 1586,
+        "sha256_in_prefix": "f70b2bdc03a71c65cd16edc5758d0219a3196cb21a8246f9886b3a0052a4c44b"
+      },
+      {
+        "_path": "lib/python3.13/site-packages/itsdangerous/__pycache__/_json.cpython-313.pyc",
+        "path_type": "hardlink",
+        "sha256": "02b0bc9ae637036a12920f04ceed7fa7dfdd91e2d71eb50f2d610aea7bbafcbe",
+        "size_in_bytes": 1208,
+        "sha256_in_prefix": "02b0bc9ae637036a12920f04ceed7fa7dfdd91e2d71eb50f2d610aea7bbafcbe"
+      },
+      {
+        "_path": "lib/python3.13/site-packages/itsdangerous/__pycache__/encoding.cpython-313.pyc",
+        "path_type": "hardlink",
+        "sha256": "fbe310e3a83c5431ef285b81b48025492e7434be80369aed4272ee9fe6b90a4f",
+        "size_in_bytes": 2643,
+        "sha256_in_prefix": "fbe310e3a83c5431ef285b81b48025492e7434be80369aed4272ee9fe6b90a4f"
+      },
+      {
+        "_path": "lib/python3.13/site-packages/itsdangerous/__pycache__/exc.cpython-313.pyc",
+        "path_type": "hardlink",
+        "sha256": "ee4733c6ceda134bb48dfbbddcd5a2ec2cd869af34bcd83588a1f4b7842472ba",
+        "size_in_bytes": 4022,
+        "sha256_in_prefix": "ee4733c6ceda134bb48dfbbddcd5a2ec2cd869af34bcd83588a1f4b7842472ba"
+      },
+      {
+        "_path": "lib/python3.13/site-packages/itsdangerous/__pycache__/serializer.cpython-313.pyc",
+        "path_type": "hardlink",
+        "sha256": "c9f64663e37358a7f07f136ce22c2d1f4eaed93de5e783db5e762ddd17f8b2e6",
+        "size_in_bytes": 15096,
+        "sha256_in_prefix": "c9f64663e37358a7f07f136ce22c2d1f4eaed93de5e783db5e762ddd17f8b2e6"
+      },
+      {
+        "_path": "lib/python3.13/site-packages/itsdangerous/__pycache__/signer.cpython-313.pyc",
+        "path_type": "hardlink",
+        "sha256": "e3e2f68e43f5f33eb4e13e6eb6c96d545af22af71f32071534af84565cd08ea4",
+        "size_in_bytes": 11210,
+        "sha256_in_prefix": "e3e2f68e43f5f33eb4e13e6eb6c96d545af22af71f32071534af84565cd08ea4"
+      },
+      {
+        "_path": "lib/python3.13/site-packages/itsdangerous/__pycache__/timed.cpython-313.pyc",
+        "path_type": "hardlink",
+        "sha256": "d0ffb17654398aad1df0d1fddc02c220ada3ae26d0422f2c1f9dff24895a8d60",
+        "size_in_bytes": 8564,
+        "sha256_in_prefix": "d0ffb17654398aad1df0d1fddc02c220ada3ae26d0422f2c1f9dff24895a8d60"
+      },
+      {
+        "_path": "lib/python3.13/site-packages/itsdangerous/__pycache__/url_safe.cpython-313.pyc",
+        "path_type": "hardlink",
+        "sha256": "cd17e85ee32ce61d811a2d3ecf7a0d563a57bec81fd48a386eb3ebd6f0b33937",
+        "size_in_bytes": 3608,
+        "sha256_in_prefix": "cd17e85ee32ce61d811a2d3ecf7a0d563a57bec81fd48a386eb3ebd6f0b33937"
+      },
+      {
+        "_path": "lib/python3.13/site-packages/itsdangerous/_json.py",
+        "path_type": "hardlink",
+        "sha256": "c0f4069a07b6c99f77dbc107285ea069d19ec866022502b1b54fa22ca13a5270",
+        "size_in_bytes": 473,
+        "sha256_in_prefix": "c0f4069a07b6c99f77dbc107285ea069d19ec866022502b1b54fa22ca13a5270"
+      },
+      {
+        "_path": "lib/python3.13/site-packages/itsdangerous/encoding.py",
+        "path_type": "hardlink",
+        "sha256": "c304f3e6aff7ccb71a01dba793afef4a84adc06a9859edf4ed997f53ceda4453",
+        "size_in_bytes": 1409,
+        "sha256_in_prefix": "c304f3e6aff7ccb71a01dba793afef4a84adc06a9859edf4ed997f53ceda4453"
+      },
+      {
+        "_path": "lib/python3.13/site-packages/itsdangerous/exc.py",
+        "path_type": "hardlink",
+        "sha256": "46bddec68d0c44511c3d996dc1e7322b5e955756c4d8af7f175f9dfa58dc527e",
+        "size_in_bytes": 3201,
+        "sha256_in_prefix": "46bddec68d0c44511c3d996dc1e7322b5e955756c4d8af7f175f9dfa58dc527e"
+      },
+      {
+        "_path": "lib/python3.13/site-packages/itsdangerous/py.typed",
+        "path_type": "hardlink",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "size_in_bytes": 0,
+        "sha256_in_prefix": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      {
+        "_path": "lib/python3.13/site-packages/itsdangerous/serializer.py",
+        "path_type": "hardlink",
+        "sha256": "3e67700032ea912c902d9d2338a0200ec016e24fc7d13940ef5122df3d02e5a2",
+        "size_in_bytes": 15601,
+        "sha256_in_prefix": "3e67700032ea912c902d9d2338a0200ec016e24fc7d13940ef5122df3d02e5a2"
+      },
+      {
+        "_path": "lib/python3.13/site-packages/itsdangerous/signer.py",
+        "path_type": "hardlink",
+        "sha256": "60ed0257b341bc703a8f9e3d4441c91548d4a23c36a47ab0714a509d4ef23584",
+        "size_in_bytes": 9647,
+        "sha256_in_prefix": "60ed0257b341bc703a8f9e3d4441c91548d4a23c36a47ab0714a509d4ef23584"
+      },
+      {
+        "_path": "lib/python3.13/site-packages/itsdangerous/timed.py",
+        "path_type": "hardlink",
+        "sha256": "e91bc332a36e9863317f4f8796969974df4f51042646fad01a994a871ba2bd4b",
+        "size_in_bytes": 8083,
+        "sha256_in_prefix": "e91bc332a36e9863317f4f8796969974df4f51042646fad01a994a871ba2bd4b"
+      },
+      {
+        "_path": "lib/python3.13/site-packages/itsdangerous/url_safe.py",
+        "path_type": "hardlink",
+        "sha256": "6b3e1ee5f5e2fefb3e61b5a3f186709f8c2254a7de0fef8610a453e547aee0fe",
+        "size_in_bytes": 2505,
+        "sha256_in_prefix": "6b3e1ee5f5e2fefb3e61b5a3f186709f8c2254a7de0fef8610a453e547aee0fe"
+      }
+    ]
+  },
+  "link": {
+    "source": "/home/gleb/smart-retail-project/retail-app/backend/exit/pkgs/itsdangerous-2.2.0-py313h06a4308_0",
+    "type": 1
+  }
+}

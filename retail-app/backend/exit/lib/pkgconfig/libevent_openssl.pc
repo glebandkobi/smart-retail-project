@@ -1,0 +1,16 @@
+#libevent pkg-config source file
+
+prefix=/home/gleb/smart-retail-project/retail-app/backend/exit
+exec_prefix=/home/gleb/smart-retail-project/retail-app/backend/exit
+libdir=/home/gleb/smart-retail-project/retail-app/backend/exit/lib
+includedir=/home/gleb/smart-retail-project/retail-app/backend/exit/include
+
+Name: libevent_openssl
+Description: libevent_openssl adds openssl-based TLS support to libevent
+Version: 2.1.12
+Requires: libevent
+Conflicts:
+Libs: -L${libdir} -levent_openssl
+Libs.private:   -L/home/gleb/smart-retail-project/retail-app/backend/exit/lib/libssl.so -L/home/gleb/smart-retail-project/retail-app/backend/exit/lib/libcrypto.so
+Cflags: -I${includedir} 
+

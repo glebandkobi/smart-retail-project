@@ -1,0 +1,13 @@
+prefix=/home/gleb/smart-retail-project/retail-app/backend/exit
+exec_prefix=${prefix}
+libdir=${exec_prefix}/lib
+includedir=${prefix}/include
+
+Name: libarchive
+Description: library that can create and read several streaming archive formats
+Version: 3.8.2
+Cflags: -I${includedir}
+Cflags.private: -DLIBARCHIVE_STATIC
+Libs: -L${libdir} -larchive
+Libs.private:  -lz -lbz2 -llzma -llz4 -lzstd -lcrypto -lxml2 -lssl -L/home/gleb/smart-retail-project/retail-app/backend/exit/lib -lxml2 -L/home/gleb/smart-retail-project/retail-app/backend/exit/lib -lz -L/home/gleb/smart-retail-project/retail-app/backend/exit/lib -llzma -L/home/gleb/smart-retail-project/retail-app/backend/exit/lib -lm -licui18n -L/home/gleb/smart-retail-project/retail-app/backend/exit/lib -licuuc -licudata -lpthread -ldl -lm
+Requires.private: 

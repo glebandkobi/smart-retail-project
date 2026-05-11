@@ -1,0 +1,11 @@
+prefix=/home/gleb/smart-retail-project/retail-app/backend/exit
+exec_prefix=${prefix}
+includedir=/home/gleb/smart-retail-project/retail-app/backend/exit/include
+libdir=/home/gleb/smart-retail-project/retail-app/backend/exit/lib
+
+Name: Yaml-cpp
+Description: A YAML parser and emitter for C++
+Version: 0.8.0
+Requires:
+Libs: -L${libdir} -lyaml-cpp
+Cflags: -I${includedir}

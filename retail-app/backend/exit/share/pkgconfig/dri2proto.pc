@@ -1,0 +1,7 @@
+prefix=/home/gleb/smart-retail-project/retail-app/backend/exit
+includedir=${prefix}/include
+ 
+Name: DRI2Proto
+Description: DRI2 extension headers
+Version: 2.8
+Cflags: -I${includedir}
