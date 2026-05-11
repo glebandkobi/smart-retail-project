@@ -1,0 +1,14 @@
+services:
+  backend-api:
+    build: ./retail-app/backend
+    ports:
+      - "5000:5000"
+    restart: always
+
+  frontend-web:
+    build: ./retail-app/frontend
+    ports:
+      - "8080:80"
+    depends_on:
+      - backend-api
+    restart: always
