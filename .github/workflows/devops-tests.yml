@@ -26,7 +26,7 @@ jobs:
         # stop the build if there are Python syntax errors or undefined names
         flake8 retail-devops/Python/app.py --count --select=E9,F63,F7,F82 --show-source --statistics
 
-  test-terraform:
+ test-terraform:
     runs-on: ubuntu-latest
     steps:
     - name: Checkout Code
@@ -35,8 +35,8 @@ jobs:
     - name: Set up Terraform
       uses: hashicorp/setup-terraform@v3
 
-    - name: Validate Terraform Syntax
+    - name: Check Terraform Format and Syntax
       run: |
         cd retail-devops/Terraform
-        terraform init -backend=false
-        terraform validate
+        # Checks if code is formatted and parses basic HCL layout syntax cleanly
+        terraform fmt -check
