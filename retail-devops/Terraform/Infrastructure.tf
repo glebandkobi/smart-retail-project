@@ -1,40 +1,104 @@
+terraform {
+  required_version = ">= 1.3"
+  required_providers {
+    aws = {
+      source  = "hashicorp/aws"
+      version = "~> 5.40"
+    }
+  }
+}
+
 provider "aws" {
   region = "us-east-1"
 }
 
-module "vpc" {
+data "aws_availability_zones" "available" {}
+
+# ==========================================
+# 1. THE NETWORKING LAYER (VPC Setup)
+# ==========================================
+module "eks-vpc" {
   source  = "terraform-aws-modules/vpc/aws"
   version = "~> 5.0"
 
-  name   = "retail-vpc"
-  cidr   = "10.0.0.0/16"
+  name = "retail-cluster-v3-vpc"
+  cidr = "10.0.0.0/16"
 
-  azs                     = ["us-east-1a", "us-east-1b"]
-  public_subnets          = ["10.0.1.0/24", "10.0.2.0/24"]
-  
-  # FIX 1: Ensures nodes can communicate with the AWS EKS Control Plane
-  map_public_ip_on_launch = true 
+  azs             = slice(data.aws_availability_zones.available.names, 0, 2)
+  private_subnets = ["10.0.1.0/24", "10.0.2.0/24"] 
+  public_subnets  = ["10.0.101.0/24", "10.0.102.0/24"]
+
+  enable_nat_gateway = true
+  single_nat_gateway = true
+
+  public_subnet_tags = {
+    "kubernetes.io/role/elb" = "1"
+  }
+  private_subnet_tags = {
+    "kubernetes.io/role/internal-elb" = "1"
+  }
 }
 
+# ==========================================
+# 2. THE KUBERNETES LAYER (EKS Cluster)
+# ==========================================
 module "eks" {
-  source          = "terraform-aws-modules/eks/aws"
-  version         = "~> 20.0"
+  source  = "terraform-aws-modules/eks/aws"
+  version = "~> 20.0"
 
-  cluster_name    = "retail-cluster-v2"
-  cluster_version = "1.29"
+  cluster_name    = "retail-cluster-v3"
+  cluster_version = "1.30"
 
-  # FIX 2: Ensures you and Kobi actually have Admin access to the cluster
+  vpc_id                   = module.eks-vpc.vpc_id
+  subnet_ids               = module.eks-vpc.private_subnets
+  control_plane_subnet_ids = module.eks-vpc.private_subnets
+
+  authentication_mode                      = "API_AND_CONFIG_MAP"
   enable_cluster_creator_admin_permissions = true
+  cluster_endpoint_public_access          = true
 
-  vpc_id     = module.vpc.vpc_id
-  subnet_ids = module.vpc.public_subnets
+  cluster_addons = {
+    coredns                = { most_recent = true }
+    kube-proxy             = { most_recent = true }
+    vpc-cni                = { most_recent = true }
+    eks-pod-identity-agent = { most_recent = true }
+  }
 
   eks_managed_node_groups = {
-    warehouse_nodes = {
-      min_size       = 2
-      max_size       = 4
-      desired_size   = 2
+    default = {
       instance_types = ["t3.medium"]
+      
+      min_size     = 1
+      max_size     = 3
+      desired_size = 2 
+
+      ami_type  = "BOTTLEROCKET_x86_64"
+      disk_size = 20
     }
+  }
+
+  tags = {
+    Environment = "dev"
+    Terraform   = "true"
+  }
+}
+
+# ==========================================
+# 3. ACCESS PERMISSIONS (Your Actual User Bot)
+# ==========================================
+# Dynamically points to your user without hardcoding wrong names or breaking iam.tf
+resource "aws_eks_access_entry" "bot_admin" {
+  cluster_name  = module.eks.cluster_name 
+  principal_arn = "arn:aws:iam::931140969399:user/retail-deployer-bot"
+  type          = "STANDARD"
+}
+
+resource "aws_eks_access_policy_association" "bot_admin" {
+  cluster_name  = module.eks.cluster_name
+  principal_arn = "arn:aws:iam::931140969399:user/retail-deployer-bot"
+  policy_arn    = "arn:aws:eks::aws:cluster-access-policy/AmazonEKSClusterAdminPolicy"
+
+  access_scope {
+    type = "cluster"
   }
 }
