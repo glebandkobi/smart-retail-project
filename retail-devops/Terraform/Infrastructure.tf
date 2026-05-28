@@ -6,19 +6,19 @@ module "vpc" {
   source  = "terraform-aws-modules/vpc/aws"
   version = "~> 5.0"
 
-  name   = "retail-vpc"
-  cidr   = "10.0.0.0/16"
+  name = "retail-vpc"
+  cidr = "10.0.0.0/16"
 
-  azs                     = ["us-east-1a", "us-east-1b"]
-  public_subnets          = ["10.0.1.0/24", "10.0.2.0/24"]
-  
+  azs            = ["us-east-1a", "us-east-1b"]
+  public_subnets = ["10.0.1.0/24", "10.0.2.0/24"]
+
   # FIX 1: Ensures nodes can communicate with the AWS EKS Control Plane
-  map_public_ip_on_launch = true 
+  map_public_ip_on_launch = true
 }
 
 module "eks" {
-  source          = "terraform-aws-modules/eks/aws"
-  version         = "~> 20.0"
+  source  = "terraform-aws-modules/eks/aws"
+  version = "~> 20.0"
 
   cluster_name    = "retail-cluster-v2"
   cluster_version = "1.29"
