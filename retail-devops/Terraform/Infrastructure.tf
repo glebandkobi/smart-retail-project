@@ -25,7 +25,7 @@ module "eks-vpc" {
   cidr = "10.0.0.0/16"
 
   azs             = slice(data.aws_availability_zones.available.names, 0, 2)
-  private_subnets = ["10.0.1.0/24", "10.0.2.0/24"] 
+  private_subnets = ["10.0.1.0/24", "10.0.2.0/24"]
   public_subnets  = ["10.0.101.0/24", "10.0.102.0/24"]
 
   enable_nat_gateway = true
@@ -57,7 +57,7 @@ module "eks" {
   # without needing manual, conflicting aws_eks_access_entry resource blocks!
   authentication_mode                      = "API_AND_CONFIG_MAP"
   enable_cluster_creator_admin_permissions = true
-  cluster_endpoint_public_access          = true
+  cluster_endpoint_public_access           = true
 
   cluster_addons = {
     coredns                = { most_recent = true }
@@ -70,10 +70,10 @@ module "eks" {
     default = {
       # 100% Free Tier Eligible compute size
       instance_types = ["t3.small"]
-      
+
       min_size     = 1
       max_size     = 2
-      desired_size = 1 
+      desired_size = 1
 
       ami_type  = "BOTTLEROCKET_x86_64"
       disk_size = 20
