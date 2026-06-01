@@ -5,3 +5,9 @@ build/
 *.json
 pkgs/
 cache/
+venv/
+.venv/
+*/venv/
+instance/
+*.db
+__pycache__/
