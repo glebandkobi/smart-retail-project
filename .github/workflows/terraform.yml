@@ -5,6 +5,16 @@ on:
     branches: [ main, feature/* ]
   pull_request:
     branches: [ main ]
+  workflow_dispatch:
+    inputs:
+      action:
+        description: 'Choose action to perform'
+        required: true
+        default: 'apply'
+        type: choice
+        options:
+          - apply
+          - destroy
 
 jobs:
   terraform_validation:
@@ -38,6 +48,7 @@ jobs:
     name: "2. AWS Simulation Plan"
     runs-on: ubuntu-latest
     needs: terraform_validation
+    if: "${{ github.event.inputs.action != 'destroy' }}"
     steps:
       - name: Checkout Code
         uses: actions/checkout@v4
@@ -62,11 +73,13 @@ jobs:
           cd retail-devops/Terraform
           terraform plan -no-color
 
-  terraform_deploy:
-    name: "3. Real AWS Deployment"
+  terraform_execute:
+    name: "3. AWS Execution (Apply/Destroy)"
     runs-on: ubuntu-latest
-    needs: terraform_dry_run
-    if: github.ref == 'refs/heads/main' && github.event_name == 'push'
+    needs: [terraform_validation]
+    if: |
+      (github.ref == 'refs/heads/main' && github.event_name == 'push') || 
+      (github.event_name == 'workflow_dispatch')
     steps:
       - name: Checkout Code
         uses: actions/checkout@v4
@@ -87,6 +100,13 @@ jobs:
           terraform init
 
       - name: Run Real Deployment
+        if: "${{ github.event.inputs.action != 'destroy' }}"
         run: |
           cd retail-devops/Terraform
           terraform apply -auto-approve -no-color
+
+      - name: Run Total Destruction
+        if: "${{ github.event.inputs.action == 'destroy' }}"
+        run: |
+          cd retail-devops/Terraform
+          terraform destroy -auto-approve -no-color
