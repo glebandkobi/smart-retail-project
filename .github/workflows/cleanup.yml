@@ -1,0 +1,28 @@
+name: "Temporary AWS Nuke Cleanup"
+
+on:
+  workflow_dispatch:
+
+jobs:
+  aws_cleanup:
+    name: "Purge Ghost Resources"
+    runs-on: ubuntu-latest
+    steps:
+      - name: Configure AWS Credentials
+        uses: aws-actions/configure-aws-credentials@v4
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: us-east-1
+
+      - name: Delete Blocking Resources
+        run: |
+          echo "Deleting CloudWatch Log Group..."
+          aws logs delete-log-group --log-group-name "/aws/eks/retail-cluster-v6/cluster" || true
+          
+          echo "Scheduling KMS Key Deletion..."
+          KEY_ID=$(aws kms list-aliases --query "Aliases[?AliasName=='alias/eks/retail-cluster-v6'].TargetKeyId" --output text)
+          if [ ! -z "$KEY_ID" ] && [ "$KEY_ID" != "None" ]; then
+            aws kms schedule-key-deletion --key-id "$KEY_ID" --pending-window-in-days 7 || true
+          fi
+          echo "Cleanup attempt complete."
