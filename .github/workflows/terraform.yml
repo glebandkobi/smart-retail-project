@@ -61,11 +61,12 @@ jobs:
         run: |
           cd retail-devops/Terraform
           terraform plan -no-color
+
   terraform_deploy:
     name: "3. Real AWS Deployment"
     runs-on: ubuntu-latest
-    needs: terraform_dry_run # Запустится только если Plan прошел без ошибок
-    if: github.ref == 'refs/heads/main' && github.event_name == 'push' # Запуск только при пуше в main branch
+    needs: terraform_dry_run
+    if: github.ref == 'refs/heads/main' && github.event_name == 'push'
     steps:
       - name: Checkout Code
         uses: actions/checkout@v4
