@@ -1,4 +1,10 @@
+.terraform/
+*.tfstate
+*.tfstate.backup
+.terraform.lock.hcl
+.terraform.tfstate.lock.info
 node_modules/
+feature/flask-inventory-api
 build/
 .DS_Store
 *.sh
@@ -11,3 +17,6 @@ venv/
 instance/
 *.db
 __pycache__/
+=======
+.env
+main
