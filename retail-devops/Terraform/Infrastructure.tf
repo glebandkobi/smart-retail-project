@@ -28,7 +28,7 @@ module "eks-vpc" {
   source  = "terraform-aws-modules/vpc/aws"
   version = "~> 5.0"
 
-  name = "retail-cluster-v6-vpc"
+  name = "retail-cluster-v7-vpc"
   cidr = "10.0.0.0/16"
 
   azs             = slice(data.aws_availability_zones.available.names, 0, 2)
@@ -52,7 +52,7 @@ module "eks" {
   source  = "terraform-aws-modules/eks/aws"
   version = "~> 20.0"
 
-  cluster_name    = "retail-cluster-v6"
+  cluster_name    = "retail-cluster-v7"
   cluster_version = "1.30"
 
   vpc_id                   = module.eks-vpc.vpc_id
