@@ -1,8 +1,8 @@
 terraform {
   required_version = ">= 1.3"
-  
+
   backend "s3" {
-    bucket = "retail-terraform-state-savwstates3" 
+    bucket = "retail-terraform-state-savwstates3"
     key    = "dev/terraform.tfstate"
     region = "us-east-1"
   }
