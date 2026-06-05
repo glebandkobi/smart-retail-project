@@ -1,7 +1,7 @@
 name: "Red Button: Destroy DEV Infrastructure"
 
 on:
-  workflow_dispatch: # Позволяет запускать кнопку вручную из интерфейса GitHub
+  workflow_dispatch:
 
 jobs:
   terraform_destroy:
