@@ -2,7 +2,7 @@ terraform {
   required_version = ">= 1.3"
 
   backend "s3" {
-    bucket = "retail-terraform-state-savwstates3"
+    bucket = "retail-terraform-state-savestates3"
     key    = "dev/terraform.tfstate"
     region = "us-east-1"
   }
@@ -15,21 +15,20 @@ terraform {
   }
 }
 
-
 provider "aws" {
   region = "us-east-1"
 }
 
 data "aws_availability_zones" "available" {}
 
-# ==========================================
+
 # 1. THE NETWORKING LAYER (VPC Setup)
-# ==========================================
+
 module "eks-vpc" {
   source  = "terraform-aws-modules/vpc/aws"
   version = "~> 5.0"
 
-  name = "retail-cluster-v6-vpc"
+  name = "retail-cluster-v7-vpc"
   cidr = "10.0.0.0/16"
 
   azs             = slice(data.aws_availability_zones.available.names, 0, 2)
@@ -47,14 +46,13 @@ module "eks-vpc" {
   }
 }
 
-# ==========================================
 # 2. THE KUBERNETES LAYER (EKS Cluster)
-# ==========================================
+
 module "eks" {
   source  = "terraform-aws-modules/eks/aws"
   version = "~> 20.0"
 
-  cluster_name    = "retail-cluster-v6"
+  cluster_name    = "retail-cluster-v7"
   cluster_version = "1.30"
 
   vpc_id                   = module.eks-vpc.vpc_id

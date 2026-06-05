@@ -1,0 +1,32 @@
+name: "Red Button: Destroy DEV Infrastructure"
+
+on:
+  workflow_dispatch:
+
+jobs:
+  terraform_destroy:
+    name: "Destroy DEV Infrastructure"
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Configure AWS Credentials
+        uses: aws-actions/configure-aws-credentials@v4
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: us-east-1
+
+      - name: Setup Terraform
+        uses: hashicorp/setup-terraform@v3
+
+      - name: Initialize Terraform
+        run: |
+          cd retail-devops/Terraform
+          terraform init
+
+      - name: Destroy All Resources
+        run: |
+          cd retail-devops/Terraform
+          terraform destroy -auto-approve -no-color
