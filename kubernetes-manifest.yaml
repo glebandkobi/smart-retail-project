@@ -1,0 +1,62 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: retail-backend
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: retail-backend
+  template:
+    metadata:
+      labels:
+        app: retail-backend
+    spec:
+      containers:
+      - name: backend
+        image: glebandkobi/smart-retail-backend:latest
+        ports:
+        - containerPort: 5000
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: retail-backend
+spec:
+  ports:
+  - port: 5000
+    targetPort: 5000
+  selector:
+    app: retail-backend
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: retail-frontend
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: retail-frontend
+  template:
+    metadata:
+      labels:
+        app: retail-frontend
+    spec:
+      containers:
+      - name: frontend
+        image: glebandkobi/smart-retail-frontend:latest
+        ports:
+        - containerPort: 80
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: retail-web-lb
+spec:
+  type: LoadBalancer
+  ports:
+  - port: 80
+    targetPort: 80
+  selector:
+    app: retail-frontend
