@@ -16,3 +16,15 @@ class Product(db.Model):
 def get_inventory():
     items = Product.query.all()
     return jsonify([{"sku": i.sku, "quantity": i.quantity} for i in items])
+
+if __name__ == '__main__':
+    with app.app_context():
+        db.create_all()
+
+        if Product.query.count() == 0:
+            db.session.add(Product(sku='LAPTOP-001', quantity=10))
+            db.session.add(Product(sku='MOUSE-002', quantity=25))
+            db.session.add(Product(sku='KEYBOARD-003', quantity=15))
+            db.session.commit()
+
+    app.run(host='0.0.0.0', port=5000, debug=True)
