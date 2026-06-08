@@ -8,7 +8,7 @@
         /* CSS: Clean, Industrial Dashboard Aesthetic */
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: #1e293b; /* Сделали темную "геймерскую" тему */
+            background-color: #1e293b; /* Dark industrial theme */
             color: #f8fafc;
             margin: 0;
             padding: 40px;
@@ -165,13 +165,36 @@
             pny: 0
         };
 
+        // NEW: Authorized Machines Database
+        const authorizedMachines = {
+            "1": "1",
+            "2": "2",
+            "3": "3"
+        };
+
+        // NEW: Audit Log to track which machine built what
+        let productionLog = [];
+
         // --- 2. LOGIC: Assembly Simulation ---
         function assembleDevice(brand) {
+            // STEP 1: Intercept and Authenticate
+            let machineId = prompt("SECURE TERMINAL\nEnter Machine ID (1, 2, or 3):");
+            if (!machineId) return; // Action cancelled
+
+            let password = prompt(`Authenticating Machine [${machineId}]\nEnter Password:`);
+            if (!password) return; // Action cancelled
+
+            // Validate credentials
+            if (authorizedMachines[machineId] !== password) {
+                showAlert("SECURITY FAULT: Invalid Machine ID or Password. Access Denied.", "error");
+                return;
+            }
+
             let reqChips = 0;
             let reqFans = 0;
-            let reqPcbs = 1; // Всегда 1 плата
+            let reqPcbs = 1; // Always 1 PCB
 
-            // Устанавливаем рецепт в зависимости от выбранной карты
+            // Set recipe based on the selected card
             if (brand === 'asus' || brand === 'msi') {
                 reqChips = 2;
                 reqFans = 2;
@@ -183,23 +206,27 @@
                 reqFans = 3;
             }
 
-            // Проверка: Хватает ли деталей?
+            // Check: Are there enough parts?
             if (inventory.microchips >= reqChips && inventory.fans >= reqFans && inventory.pcbs >= reqPcbs) {
-                // Списываем материалы
+                // Deduct materials
                 inventory.microchips -= reqChips;
                 inventory.fans -= reqFans;
                 inventory.pcbs -= reqPcbs;
                 
-                // Добавляем готовую карту
+                // Add finished card
                 warehouse[brand] += 1;
+
+                // Record the machine in the audit log
+                let timestamp = new Date().toLocaleTimeString();
+                productionLog.push(`[${timestamp}] Machine ${machineId} successfully assembled ${brand.toUpperCase()}`);
                 
-                showAlert(`Success: ${brand.toUpperCase()} GPU Assembled!`, 'success');
+                showAlert(`Authorized: Machine ${machineId} assembled ${brand.toUpperCase()}!`, 'success');
             } else {
-                // Если чего-то не хватает
-                showAlert(`Error: Insufficient parts to build ${brand.toUpperCase()}!`, 'error');
+                // If parts are missing
+                showAlert(`Fault: Machine ${machineId} halted. Insufficient parts for ${brand.toUpperCase()}!`, 'error');
             }
             
-            renderUI(); // Обновляем цифры на экране
+            renderUI(); // Update numbers on screen
         }
 
         // --- 3. UI RENDERING: Update the HTML tables ---
@@ -218,6 +245,17 @@
                 <tr><td>GIGABYTE Gaming OC RTX 4080</td><td>${warehouse.gigabyte}</td></tr>
                 <tr><td>PNY XLR8 RTX 4090</td><td>${warehouse.pny}</td></tr>
             `;
+
+            // Render the Production Log at the bottom of the warehouse table
+            if (productionLog.length > 0) {
+                let logHtml = `<tr><td colspan="2" style="background-color: #0f172a; color: #10b981; font-family: monospace;">`;
+                logHtml += `<strong>--- TERMINAL AUDIT LOG ---</strong><br>`;
+                productionLog.slice().reverse().forEach(entry => {
+                    logHtml += `> ${entry}<br>`;
+                });
+                logHtml += `</td></tr>`;
+                document.getElementById('finished-body').innerHTML += logHtml;
+            }
         }
 
         // Helper to show alert banners
