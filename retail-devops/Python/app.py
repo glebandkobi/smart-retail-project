@@ -1,34 +1,29 @@
-#Python
-from flask import Flask, jsonify, request
-from flask_sqlalchemy import SQLAlchemy
-import os
+from flask import Flask, request, jsonify
+import sqlite3
 
 app = Flask(__name__)
-app.config['SQLALCHEMY_DATABASE_URI'] = os.getenv('DATABASE_URL')
-db = SQLAlchemy(app)
 
-class Product(db.Model):
-    id = db.Column(db.Integer, primary_key=True)
-    sku = db.Column(db.String(50), unique=True)
-    quantity = db.Column(db.Integer)
+# 1. Define the missing database connection
+def get_db_connection():
+    conn = sqlite3.connect('factory.db')
+    conn.row_factory = sqlite3.Row # Allows accessing columns by name
+    return conn
 
+# 2. Get current inventory (Fixed to show GPUs, not laptops)
 @app.route('/api/inventory', methods=['GET'])
 def get_inventory():
-    items = Product.query.all()
-    return jsonify([{"sku": i.sku, "quantity": i.quantity} for i in items])
+    conn = get_db_connection()
+    
+    components = conn.execute('SELECT * FROM components').fetchall()
+    gpus = conn.execute('SELECT * FROM finished_goods').fetchall()
+    conn.close()
 
-if __name__ == '__main__':
-    with app.app_context():
-        db.create_all()
+    return jsonify({
+        "components": {row['id']: row['quantity'] for row in components},
+        "warehouse": {row['id']: row['quantity'] for row in gpus}
+    })
 
-        if Product.query.count() == 0:
-            db.session.add(Product(sku='LAPTOP-001', quantity=10))
-            db.session.add(Product(sku='MOUSE-002', quantity=25))
-            db.session.add(Product(sku='KEYBOARD-003', quantity=15))
-            db.session.commit()
-
-    app.run(host='0.0.0.0', port=5000, debug=True)
-
+# 3. Process a manufacturing request
 @app.route('/api/produce', methods=['POST'])
 def produce_item():
     data = request.json
@@ -36,7 +31,7 @@ def produce_item():
     machine_id = data.get('machine_id')
     password = data.get('password')
     
-    # 1. HARDCODED MACHINE AUTHENTICATION
+    # HARDCODED MACHINE AUTHENTICATION
     valid_machines = {"1": "1", "2": "2", "3": "3"}
     
     if str(machine_id) not in valid_machines or valid_machines[str(machine_id)] != str(password):
@@ -81,3 +76,7 @@ def produce_item():
         return jsonify({"error": str(e)}), 500
     finally:
         conn.close()
+
+# 4. Start the server (MUST be at the very bottom)
+if __name__ == '__main__':
+    app.run(host='0.0.0.0', port=5000, debug=True)
