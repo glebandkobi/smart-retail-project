@@ -1,4 +1,9 @@
 retail-app/backend/venv/
+ HEAD
 **/__pycache__/
 *.pyc
 
+=======
+venv/
+__pycache__/
+ origin/feature/factory-ui-upgrade
