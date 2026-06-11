@@ -106,7 +106,11 @@ resource "kubernetes_service" "factory_frontend_lb" {
   }
   spec {
     selector = {
+ dev-branch
       app = "factory-frontend"
+
+      app = "factory-frontend" 
+ main
     }
     port {
       port        = 80
@@ -114,4 +118,6 @@ resource "kubernetes_service" "factory_frontend_lb" {
     }
     type = "LoadBalancer"
   }
+dev-branch
 }
+} main
