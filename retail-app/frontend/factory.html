@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smart Factory: GPU Edition</title>
+    <style>
+        /* CSS: Clean, Industrial Dashboard Aesthetic */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #1e293b; /* Dark industrial theme */
+            color: #f8fafc;
+            margin: 0;
+            padding: 40px;
+        }
+        h1 {
+            color: #f8fafc;
+            border-bottom: 3px solid #10b981;
+            padding-bottom: 10px;
+        }
+        .dashboard-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            margin-top: 30px;
+        }
+        .panel {
+            background: #334155;
+            padding: 25px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.3);
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 15px;
+            color: #f1f5f9;
+        }
+        th, td {
+            text-align: left;
+            padding: 12px;
+            border-bottom: 1px solid #475569;
+        }
+        th { background-color: #0f172a; }
+        
+        /* Assembly Cards */
+        .assembly-card {
+            background-color: #0f172a;
+            border-left: 4px solid #10b981;
+            border-radius: 6px;
+            padding: 15px;
+            margin-top: 15px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .recipe-text {
+            font-size: 14px;
+            color: #94a3b8;
+            margin-top: 5px;
+        }
+        .btn-produce {
+            background-color: #10b981;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 4px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+        .btn-produce:hover { background-color: #059669; }
+        
+        /* Alerts */
+        #alert-box {
+            padding: 15px;
+            margin-top: 20px;
+            border-radius: 4px;
+            display: none;
+            font-weight: bold;
+        }
+        .alert-success { background-color: #dcfce3; color: #166534; }
+        .alert-error { background-color: #fee2e2; color: #991b1b; }
+    </style>
+</head>
+<body>
+
+    <h1>🏭 GPU Manufacturing Line</h1>
+    <div id="alert-box"></div>
+
+    <div class="dashboard-grid">
+        <div class="panel">
+            <h2>📦 Raw Materials Inventory</h2>
+            <table>
+                <thead>
+                    <tr><th>Component</th><th>In Stock</th></tr>
+                </thead>
+                <tbody id="materials-body">
+                    </tbody>
+            </table>
+        </div>
+
+        <div class="panel">
+            <h2>⚙️ Assembly Station</h2>
+            
+            <div class="assembly-card">
+                <div>
+                    <h3>ASUS Dual RTX 4070 (2-Fan)</h3>
+                    <div class="recipe-text">Recipe: 2 Microchips, 2 Fans, 1 PCB</div>
+                </div>
+                <button class="btn-produce" onclick="assembleDevice('asus')">PRODUCE</button>
+            </div>
+
+            <div class="assembly-card">
+                <div>
+                    <h3>MSI Ventus 2X RTX 4060 (2-Fan)</h3>
+                    <div class="recipe-text">Recipe: 2 Microchips, 2 Fans, 1 PCB</div>
+                </div>
+                <button class="btn-produce" onclick="assembleDevice('msi')">PRODUCE</button>
+            </div>
+
+            <div class="assembly-card" style="border-left-color: #f59e0b;">
+                <div>
+                    <h3>GIGABYTE Gaming OC RTX 4080 (3-Fan)</h3>
+                    <div class="recipe-text">Recipe: 3 Microchips, 3 Fans, 1 PCB</div>
+                </div>
+                <button class="btn-produce" style="background-color: #f59e0b;" onclick="assembleDevice('gigabyte')">PRODUCE</button>
+            </div>
+
+            <div class="assembly-card" style="border-left-color: #ef4444;">
+                <div>
+                    <h3>PNY XLR8 RTX 4090 (3-Fan)</h3>
+                    <div class="recipe-text">Recipe: 4 Microchips, 3 Fans, 1 PCB</div>
+                </div>
+                <button class="btn-produce" style="background-color: #ef4444;" onclick="assembleDevice('pny')">PRODUCE</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="dashboard-grid" style="grid-template-columns: 1fr;">
+        <div class="panel">
+            <h2>✅ Finished Goods Warehouse</h2>
+            <table>
+                <thead>
+                    <tr><th>GPU Model</th><th>Units Manufactured</th></tr>
+                </thead>
+                <tbody id="finished-body">
+                    </tbody>
+            </table>
+        </div>
+    </div>
+
+    <script>
+        // --- 1. MOCK DATA (Limited inventory for exactly 3-4 cards) ---
+        let inventory = {
+            microchips: 10,
+            fans: 10,
+            pcbs: 5
+        };
+
+        let warehouse = {
+            asus: 0,
+            msi: 0,
+            gigabyte: 0,
+            pny: 0
+        };
+
+        // NEW: Authorized Machines Database
+        const authorizedMachines = {
+            "1": "1",
+            "2": "2",
+            "3": "3"
+        };
+
+        // NEW: Audit Log to track which machine built what
+        let productionLog = [];
+
+        // --- 2. LOGIC: Assembly Simulation ---
+        function assembleDevice(brand) {
+            // STEP 1: Intercept and Authenticate
+            let machineId = prompt("SECURE TERMINAL\nEnter Machine ID (1, 2, or 3):");
+            if (!machineId) return; // Action cancelled
+
+            let password = prompt(`Authenticating Machine [${machineId}]\nEnter Password:`);
+            if (!password) return; // Action cancelled
+
+            // Validate credentials
+            if (authorizedMachines[machineId] !== password) {
+                showAlert("SECURITY FAULT: Invalid Machine ID or Password. Access Denied.", "error");
+                return;
+            }
+
+            let reqChips = 0;
+            let reqFans = 0;
+            let reqPcbs = 1; // Always 1 PCB
+
+            // Set recipe based on the selected card
+            if (brand === 'asus' || brand === 'msi') {
+                reqChips = 2;
+                reqFans = 2;
+            } else if (brand === 'gigabyte') {
+                reqChips = 3;
+                reqFans = 3;
+            } else if (brand === 'pny') {
+                reqChips = 4;
+                reqFans = 3;
+            }
+
+            // Check: Are there enough parts?
+            if (inventory.microchips >= reqChips && inventory.fans >= reqFans && inventory.pcbs >= reqPcbs) {
+                // Deduct materials
+                inventory.microchips -= reqChips;
+                inventory.fans -= reqFans;
+                inventory.pcbs -= reqPcbs;
+                
+                // Add finished card
+                warehouse[brand] += 1;
+
+                // Record the machine in the audit log
+                let timestamp = new Date().toLocaleTimeString();
+                productionLog.push(`[${timestamp}] Machine ${machineId} successfully assembled ${brand.toUpperCase()}`);
+                
+                showAlert(`Authorized: Machine ${machineId} assembled ${brand.toUpperCase()}!`, 'success');
+            } else {
+                // If parts are missing
+                showAlert(`Fault: Machine ${machineId} halted. Insufficient parts for ${brand.toUpperCase()}!`, 'error');
+            }
+            
+            renderUI(); // Update numbers on screen
+        }
+
+        // --- 3. UI RENDERING: Update the HTML tables ---
+        function renderUI() {
+            // Update Materials Table
+            document.getElementById('materials-body').innerHTML = `
+                <tr><td>Microchips</td><td>${inventory.microchips}</td></tr>
+                <tr><td>Cooling Fans</td><td>${inventory.fans}</td></tr>
+                <tr><td>PCBs (Textolite)</td><td>${inventory.pcbs}</td></tr>
+            `;
+
+            // Update Finished Goods Table
+            document.getElementById('finished-body').innerHTML = `
+                <tr><td>ASUS Dual RTX 4070</td><td>${warehouse.asus}</td></tr>
+                <tr><td>MSI Ventus 2X RTX 4060</td><td>${warehouse.msi}</td></tr>
+                <tr><td>GIGABYTE Gaming OC RTX 4080</td><td>${warehouse.gigabyte}</td></tr>
+                <tr><td>PNY XLR8 RTX 4090</td><td>${warehouse.pny}</td></tr>
+            `;
+
+            // Render the Production Log at the bottom of the warehouse table
+            if (productionLog.length > 0) {
+                let logHtml = `<tr><td colspan="2" style="background-color: #0f172a; color: #10b981; font-family: monospace;">`;
+                logHtml += `<strong>--- TERMINAL AUDIT LOG ---</strong><br>`;
+                productionLog.slice().reverse().forEach(entry => {
+                    logHtml += `> ${entry}<br>`;
+                });
+                logHtml += `</td></tr>`;
+                document.getElementById('finished-body').innerHTML += logHtml;
+            }
+        }
+
+        // Helper to show alert banners
+        function showAlert(message, type) {
+            let alertBox = document.getElementById('alert-box');
+            alertBox.style.display = 'block';
+            alertBox.textContent = message;
+            alertBox.className = type === 'success' ? 'alert-success' : 'alert-error';
+            setTimeout(() => { alertBox.style.display = 'none'; }, 3000);
+        }
+
+        // Run once on page load to show initial numbers
+        window.onload = renderUI;
+    </script>
+</body>
+</html>
