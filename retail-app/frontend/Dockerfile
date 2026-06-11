@@ -1,17 +1,10 @@
 
-# STAGE 1: Build
-FROM node:18-alpine as build
-WORKDIR /app
-COPY package*.json ./
-RUN npm install
-COPY . .
-RUN npm run build
+# Simple Nginx server
+FROM nginx:alpine
 
-# STAGE 2: Run
-FROM nginx:stable-alpine
-COPY nginx.conf /etc/nginx/conf.d/default.conf
-COPY --from=build /app/build /usr/share/nginx/html
-# ADD THIS LINE to copy your file manually after the build
-COPY factory.html /usr/share/nginx/html/factory.html
+# Copy your index.html directly to the Nginx html folder
+COPY public/index.html /usr/share/nginx/html/index.html
+
+# Expose port 80
 EXPOSE 80
 CMD ["nginx", "-g", "daemon off;"]
