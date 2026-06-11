@@ -88,3 +88,29 @@ module "eks" {
     Terraform   = "true"
   }
 }
+# 3. KUBERNETES PROVIDER SETUP
+data "aws_eks_cluster_auth" "cluster" {
+  name = module.eks.cluster_name
+}
+
+provider "kubernetes" {
+  host                   = module.eks.cluster_endpoint
+  cluster_ca_certificate = base64decode(module.eks.cluster_certificate_authority_data)
+  token                  = data.aws_eks_cluster_auth.cluster.token
+}
+# 4. THE FRONTEND LOAD BALANCER
+resource "kubernetes_service" "factory_frontend_lb" {
+  metadata {
+    name = "factory-frontend-lb"
+  }
+  spec {
+    selector = {
+      app = "factory-frontend"
+    }
+    port {
+      port        = 80
+      target_port = 8081
+    }
+    type = "LoadBalancer"
+  }
+}
