@@ -17,12 +17,22 @@ spec:
         image: glebandkobi/smart-retail-backend:latest
         ports:
         - containerPort: 5000
+        env:
+        - name: DB_HOST
+          value: "terraform-20260612072428395400000001.cojqsimku49b.us-east-1.rds.amazonaws.com"
+        - name: DB_USER
+          value: "admin"
+        - name: DB_PASSWORD
+          value: "RetailSecurePass2026!"
+        - name: DB_NAME
+          value: "smart_retail_db"
 ---
 apiVersion: v1
 kind: Service
 metadata:
   name: retail-backend
 spec:
+  type: LoadBalancer # CHANGED: Allows your web browser to communicate with the API
   ports:
   - port: 5000
     targetPort: 5000
@@ -60,3 +70,4 @@ spec:
     targetPort: 80
   selector:
     app: retail-frontend
+    
