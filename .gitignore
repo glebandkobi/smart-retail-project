@@ -7,3 +7,7 @@ retail-app/backend/venv/
 venv/
 __pycache__/
  origin/feature/factory-ui-upgrade
+
+.terraform/
+.terraform.lock.hcl
+*.exe
