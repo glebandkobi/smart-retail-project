@@ -151,3 +151,55 @@ resource "aws_s3_bucket_policy" "allow_public_read" {
     ]
   })
 }
+# 6. RDS DATABASE NETWORKING & SECURITY
+
+resource "aws_db_subnet_group" "rds_subnet_group" {
+  name       = "retail-rds-subnet-group"
+  subnet_ids = module.eks-vpc.private_subnets
+
+  tags = {
+    Name = "Retail RDS Subnet Group"
+  }
+}
+
+resource "aws_security_group" "rds_sg" {
+  name        = "retail-rds-sg"
+  description = "Allow inbound traffic from the internal VPC network to MySQL"
+  vpc_id      = module.eks-vpc.vpc_id
+
+  ingress {
+    from_port   = 3306
+    to_port     = 3306
+    protocol    = "tcp"
+    cidr_blocks = [module.eks-vpc.vpc_cidr_block]
+  }
+
+  egress {
+    from_port   = 0
+    to_port     = 0
+    protocol    = "-1"
+    cidr_blocks = ["0.0.0.0/0"]
+  }
+
+  tags = {
+    Name = "Retail RDS Security Group"
+  }
+}
+# 7. AWS RDS MYSQL DATABASE INSTANCE
+resource "aws_db_instance" "retail_mysql" {
+  allocated_storage     = 20
+  max_allocated_storage = 50 # Auto-enables storage scaling to save hassle
+  engine                = "mysql"
+  engine_version        = "8.0"
+  instance_class        = "db.t3.micro" # Free-tier eligible / cheapest option for dev testing
+
+  db_name  = "smart_retail_db"
+  username = "admin"
+  password = "RetailSecurePass2026!" # Change this to your preferred password later
+
+  db_subnet_group_name   = aws_db_subnet_group.rds_subnet_group.name
+  vpc_security_group_ids = [aws_security_group.rds_sg.id]
+
+  skip_final_snapshot = true  # Prevents Terraform from hanging when you destroy it later
+  publicly_accessible = false # Completely blocks the internet; only accessible inside the VPC
+}
