@@ -188,18 +188,18 @@ resource "aws_security_group" "rds_sg" {
 # 7. AWS RDS MYSQL DATABASE INSTANCE
 resource "aws_db_instance" "retail_mysql" {
   allocated_storage     = 20
-  max_allocated_storage = 50                  # Auto-enables storage scaling to save hassle
+  max_allocated_storage = 50 # Auto-enables storage scaling to save hassle
   engine                = "mysql"
   engine_version        = "8.0"
-  instance_class        = "db.t3.micro"       # Free-tier eligible / cheapest option for dev testing
-  
-  db_name               = "smart_retail_db"
-  username              = "admin"
-  password              = "RetailSecurePass2026!" # Change this to your preferred password later
-  
+  instance_class        = "db.t3.micro" # Free-tier eligible / cheapest option for dev testing
+
+  db_name  = "smart_retail_db"
+  username = "admin"
+  password = "RetailSecurePass2026!" # Change this to your preferred password later
+
   db_subnet_group_name   = aws_db_subnet_group.rds_subnet_group.name
   vpc_security_group_ids = [aws_security_group.rds_sg.id]
-  
-  skip_final_snapshot   = true                # Prevents Terraform from hanging when you destroy it later
-  publicly_accessible   = false               # Completely blocks the internet; only accessible inside the VPC
+
+  skip_final_snapshot = true  # Prevents Terraform from hanging when you destroy it later
+  publicly_accessible = false # Completely blocks the internet; only accessible inside the VPC
 }
