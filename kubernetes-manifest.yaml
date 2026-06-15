@@ -15,6 +15,8 @@ spec:
       containers:
       - name: backend
         image: glebandkobi/smart-retail-backend:latest
+        command: ["/bin/sh", "-c"]
+        args: ["npm install mysql2 && node server.js"]
         ports:
         - containerPort: 5000
         env:
@@ -32,7 +34,7 @@ kind: Service
 metadata:
   name: retail-backend
 spec:
-  type: LoadBalancer # CHANGED: Allows your web browser to communicate with the API
+  type: LoadBalancer
   ports:
   - port: 5000
     targetPort: 5000
@@ -70,4 +72,3 @@ spec:
     targetPort: 80
   selector:
     app: retail-frontend
-    
