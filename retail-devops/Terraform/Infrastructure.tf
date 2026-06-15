@@ -118,7 +118,7 @@ resource "kubernetes_service" "factory_frontend_lb" {
 
 # 5. THE SERVERLESS FRONTEND S3 BUCKET
 resource "aws_s3_bucket" "frontend_site" {
-  bucket = "smart-retail-frontend-live"
+  bucket = "smart-retail-frontend-live-v8"
 }
 
 resource "aws_s3_bucket_website_configuration" "frontend_config" {
@@ -156,7 +156,7 @@ resource "aws_s3_bucket_policy" "allow_public_read" {
 
 # 6. RDS DATABASE NETWORKING & SECURITY
 resource "aws_db_subnet_group" "rds_subnet_group" {
-  name       = "retail-rds-subnet-group"
+  name       = "retail-rds-subnet-group-v8"
   subnet_ids = module.eks-vpc.private_subnets
 
   tags = {
