@@ -21,11 +21,6 @@ jobs:
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           aws-region: us-east-1
 
-      - name: Setup Terraform
-        uses: hashicorp/setup-terraform@v3
-        with:
-          terraform_wrapper: false # Bypasses custom exit-code wrapping glitches
-
       - name: Initialize Terraform
         run: |
           cd retail-devops/Terraform
@@ -34,4 +29,4 @@ jobs:
       - name: Apply Infrastructure
         run: |
           cd retail-devops/Terraform
-          terraform apply -auto-approve -no-color
+          terraform apply -auto-approve
