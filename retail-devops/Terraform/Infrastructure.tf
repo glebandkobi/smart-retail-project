@@ -60,7 +60,7 @@ module "eks" {
   enable_cluster_creator_admin_permissions = true
   cluster_endpoint_public_access           = true
 
-  create_cloudwatch_log_group              = false
+  create_cloudwatch_log_group = false
 
   cluster_addons = {
     coredns                = { most_recent = true }
