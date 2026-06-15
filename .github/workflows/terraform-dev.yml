@@ -21,26 +21,13 @@ jobs:
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           aws-region: us-east-1
 
-      # 1. THIS INSTALLS TERRAFORM (Wrapper disabled to prevent glitches)
       - name: Setup Terraform
         uses: hashicorp/setup-terraform@v3
         with:
           terraform_wrapper: false
 
-      # 2. AUTOCLEANS FORMATTING
-      - name: Force Code Auto-Format
-        run: |
-          cd retail-devops/Terraform
-          terraform fmt
-
-      # 3. INITIALIZES
-      - name: Initialize Terraform
+      - name: Emergency Deploy (No Checks)
         run: |
           cd retail-devops/Terraform
           terraform init
-
-      # 4. DEPLOYS TO AWS
-      - name: Apply Infrastructure
-        run: |
-          cd retail-devops/Terraform
           terraform apply -auto-approve
