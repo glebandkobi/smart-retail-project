@@ -23,6 +23,8 @@ jobs:
 
       - name: Setup Terraform
         uses: hashicorp/setup-terraform@v3
+        with:
+          terraform_wrapper: false # Bypasses custom exit-code wrapping glitches
 
       - name: Initialize Terraform
         run: |
