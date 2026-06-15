@@ -1,3 +1,4 @@
+cat > Infrastructure.tf << 'EOF'
 terraform {
   required_version = ">= 1.3"
 
@@ -21,9 +22,7 @@ provider "aws" {
 
 data "aws_availability_zones" "available" {}
 
-
 # 1. THE NETWORKING LAYER (VPC Setup)
-
 module "eks-vpc" {
   source  = "terraform-aws-modules/vpc/aws"
   version = "~> 5.0"
@@ -47,7 +46,6 @@ module "eks-vpc" {
 }
 
 # 2. THE KUBERNETES LAYER (EKS Cluster)
-
 module "eks" {
   source  = "terraform-aws-modules/eks/aws"
   version = "~> 20.0"
@@ -63,7 +61,6 @@ module "eks" {
   enable_cluster_creator_admin_permissions = true
   cluster_endpoint_public_access           = true
 
-  # FIX added here: Bypasses the duplicate CloudWatch log group blocker
   create_cloudwatch_log_group              = false
 
   cluster_addons = {
@@ -159,7 +156,6 @@ resource "aws_s3_bucket_policy" "allow_public_read" {
 }
 
 # 6. RDS DATABASE NETWORKING & SECURITY
-
 resource "aws_db_subnet_group" "rds_subnet_group" {
   name       = "retail-rds-subnet-group"
   subnet_ids = module.eks-vpc.private_subnets
@@ -196,18 +192,19 @@ resource "aws_security_group" "rds_sg" {
 # 7. AWS RDS MYSQL DATABASE INSTANCE
 resource "aws_db_instance" "retail_mysql" {
   allocated_storage     = 20
-  max_allocated_storage = 50 
+  max_allocated_storage = 50
   engine                = "mysql"
   engine_version        = "8.0"
-  instance_class        = "db.t3.micro" 
+  instance_class        = "db.t3.micro"
 
   db_name  = "smart_retail_db"
   username = "admin"
-  password = "RetailSecurePass2026!" 
+  password = "RetailSecurePass2026!"
 
   db_subnet_group_name   = aws_db_subnet_group.rds_subnet_group.name
   vpc_security_group_ids = [aws_security_group.rds_sg.id]
 
-  skip_final_snapshot = true  
-  publicly_accessible = false 
+  skip_final_snapshot = true
+  publicly_accessible = false
 }
+EOF
