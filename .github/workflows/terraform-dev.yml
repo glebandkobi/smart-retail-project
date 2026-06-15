@@ -1,9 +1,8 @@
-name: "Dev Environment: Deploy AWS Infrastructure"
+name: "Production: Deploy AWS Infrastructure"
 
 on:
   push:
     branches:
-      - dev-branch
       - main
   workflow_dispatch:
 
@@ -22,7 +21,6 @@ jobs:
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           aws-region: us-east-1
 
-      # FORCE FIX: Rewrites the layout on the fly so the compiler cannot complain
       - name: Force Code Auto-Format
         run: |
           cd retail-devops/Terraform
