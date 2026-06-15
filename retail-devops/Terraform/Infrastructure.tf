@@ -1,4 +1,3 @@
-cat > Infrastructure.tf << 'EOF'
 terraform {
   required_version = ">= 1.3"
 
@@ -207,4 +206,3 @@ resource "aws_db_instance" "retail_mysql" {
   skip_final_snapshot = true
   publicly_accessible = false
 }
-EOF
