@@ -63,6 +63,9 @@ module "eks" {
   enable_cluster_creator_admin_permissions = true
   cluster_endpoint_public_access           = true
 
+  # FIX added here: Bypasses the duplicate CloudWatch log group blocker
+  create_cloudwatch_log_group              = false
+
   cluster_addons = {
     coredns                = { most_recent = true }
     kube-proxy             = { most_recent = true }
@@ -88,6 +91,7 @@ module "eks" {
     Terraform   = "true"
   }
 }
+
 # 3. KUBERNETES PROVIDER SETUP
 data "aws_eks_cluster_auth" "cluster" {
   name = module.eks.cluster_name
@@ -98,6 +102,7 @@ provider "kubernetes" {
   cluster_ca_certificate = base64decode(module.eks.cluster_certificate_authority_data)
   token                  = data.aws_eks_cluster_auth.cluster.token
 }
+
 # 4. THE FRONTEND LOAD BALANCER
 resource "kubernetes_service" "factory_frontend_lb" {
   metadata {
@@ -114,6 +119,7 @@ resource "kubernetes_service" "factory_frontend_lb" {
     type = "LoadBalancer"
   }
 }
+
 # 5. THE SERVERLESS FRONTEND S3 BUCKET
 resource "aws_s3_bucket" "frontend_site" {
   bucket = "smart-retail-frontend-live"
@@ -151,6 +157,7 @@ resource "aws_s3_bucket_policy" "allow_public_read" {
     ]
   })
 }
+
 # 6. RDS DATABASE NETWORKING & SECURITY
 
 resource "aws_db_subnet_group" "rds_subnet_group" {
@@ -185,21 +192,22 @@ resource "aws_security_group" "rds_sg" {
     Name = "Retail RDS Security Group"
   }
 }
+
 # 7. AWS RDS MYSQL DATABASE INSTANCE
 resource "aws_db_instance" "retail_mysql" {
   allocated_storage     = 20
-  max_allocated_storage = 50 # Auto-enables storage scaling to save hassle
+  max_allocated_storage = 50 
   engine                = "mysql"
   engine_version        = "8.0"
-  instance_class        = "db.t3.micro" # Free-tier eligible / cheapest option for dev testing
+  instance_class        = "db.t3.micro" 
 
   db_name  = "smart_retail_db"
   username = "admin"
-  password = "RetailSecurePass2026!" # Change this to your preferred password later
+  password = "RetailSecurePass2026!" 
 
   db_subnet_group_name   = aws_db_subnet_group.rds_subnet_group.name
   vpc_security_group_ids = [aws_security_group.rds_sg.id]
 
-  skip_final_snapshot = true  # Prevents Terraform from hanging when you destroy it later
-  publicly_accessible = false # Completely blocks the internet; only accessible inside the VPC
+  skip_final_snapshot = true  
+  publicly_accessible = false 
 }
